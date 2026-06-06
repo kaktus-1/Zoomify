@@ -95,7 +95,7 @@ object OkZoomerMigrator : Migrator {
             else
                 SoundBehaviour.NEVER
 
-        ZoomifySettings.initialZoom.value = okz.values.zoomDivisor.roundToInt()
+        ZoomifySettings.initialZoom.value = okz.values.zoomDivisor
         migration.warn(Component.translatable("zoomify.migrate.okz.minZoomDiv"))
         //ZoomifySettings.scrollZoomAmount.value = ((okz.values.maxZoomDivisor - ZoomifySettings.initialZoom.value) / Zoomify.maxScrollTiers).roundToInt()
 
@@ -108,11 +108,11 @@ object OkZoomerMigrator : Migrator {
                 ZoomifySettings.zoomOutTransition.value = TransitionType.LINEAR
             }
             OkZoomerConfig.Features.TransitionMode.SMOOTH -> {
-                val targetMultiplier = 1f / ZoomifySettings.initialZoom.value
-                var multiplier = 1f
+                val targetMultiplier = 1.0 / ZoomifySettings.initialZoom.value
+                var multiplier = 1.0
                 var ticks = 0
                 while (multiplier != targetMultiplier) {
-                    multiplier += (targetMultiplier - multiplier) * okz.values.smoothMultiplier.toFloat()
+                    multiplier += (targetMultiplier - multiplier) * okz.values.smoothMultiplier
                     ticks++
                 }
                 val zoomTime = (ticks * 0.05 / 0.1).roundToInt() * 0.1
