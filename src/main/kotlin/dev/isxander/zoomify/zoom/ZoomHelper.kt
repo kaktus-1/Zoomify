@@ -8,8 +8,8 @@ class ZoomHelper(
     private val initialInterpolator: Interpolator,
     private val scrollInterpolator: Interpolator,
 
-    private val initialZoom: () -> Int,
-    private val zoomPerStep: () -> Int,
+    private val initialZoom: () -> Double,
+    private val zoomPerStep: () -> Double,
     val maxScrollTiers: () -> Int,
 ) {
     private var prevInitialInterpolation = 0.0
@@ -111,7 +111,7 @@ class ZoomHelper(
                 )
             ) else initialInterpolation,
             1.0,
-            if (!resetting) 1 / initialZoom().toDouble() else resetMultiplier
+            if (!resetting) 1 / initialZoom() else resetMultiplier
         )
     }
 
