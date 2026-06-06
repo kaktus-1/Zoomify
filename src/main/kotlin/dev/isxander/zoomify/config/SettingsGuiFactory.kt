@@ -75,7 +75,7 @@ private class SettingsGuiFactory {
         val behaviour by categories.registering {
             val basic by groups.registering {
                 options.registerDemo(ZoomifySettings::initialZoom, initialOnlyDemo) {
-                    controller = slider(range = 1.0..10.0, step = 1.0, formatter = { v: Double ->
+                    controller = slider(range = 0.1..10.0, step = 0.1, formatter = { v: Double ->
                         Component.literal("%.1fx".format(v)) 
                     })
                 }
