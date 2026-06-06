@@ -19,15 +19,15 @@ fun RegularZoomHelper(settings: ZoomifySettings) = ZoomHelper(
             0.1
         )
     },
-    initialZoom = settings.initialZoom::value,
-    zoomPerStep = settings.zoomPerStep::value,
-    maxScrollTiers = settings.scrollStepCount::value,
+    initialZoom = { settings.initialZoom.value.toDouble() },
+    zoomPerStep = { settings.zoomPerStep.value.toDouble() },
+    maxScrollTiers = { settings.scrollStepCount.value.toInt() },
 )
 
 fun SecondaryZoomHelper(settings: ZoomifySettings) = ZoomHelper(
     TimedInterpolator(settings.secondaryZoomInTime::value, settings.secondaryZoomOutTime::value),
     InstantInterpolator,
-    initialZoom = settings.secondaryZoomAmount::value,
-    zoomPerStep = { 100 },
+    initialZoom = { settings.secondaryZoomAmount.value.toDouble() },
+    zoomPerStep = { 100.0 },
     maxScrollTiers = { 0 },
 )
