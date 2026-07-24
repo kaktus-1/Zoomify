@@ -72,7 +72,7 @@ stonecutter {
 repositories {
     mavenCentral()
     exclusiveContent {
-        forRepository { maven("https://maven.terraformersmc.com") }
+        forRepository { maven("https://maven.terraformersmc.com/releases") }
         filter { includeGroup("com.terraformersmc") }
     }
     exclusiveContent {
